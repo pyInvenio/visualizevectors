@@ -90,7 +90,7 @@
 
 		renderer.setSize(window.innerWidth, window.innerHeight);
 		renderer.setClearColor(0x000000);
-		let proximityThreshold = 5; // Distance threshold for clustering
+		let proximityThreshold = 25; // Distance threshold for clustering
 
 		const clusters = []; // Array to store cluster indices
 
@@ -119,11 +119,7 @@
 			// Create the cube and assign a color based on the cluster index
 			const geometry = new THREE.BoxGeometry(1, 1, 1);
 			const material = new THREE.MeshBasicMaterial({
-				color: new THREE.Color(
-					clusterIndex / clusters.length,
-					1 - clusterIndex / clusters.length,
-					1 - clusterIndex / clusters.length
-				)
+				color: new THREE.Color().setHSL(clusterIndex / clusters.length, 1, 0.5)
 			});
 
 			const cube = new THREE.Mesh(geometry, material);
@@ -256,5 +252,5 @@
 
 <div class="absolute bg-black text-white text-lg top-0 w-1/4 h-1/4 bg-opacity-50">
 	<h1>Thread Id: {thread_id_num}</h1>
-	<h1> Chat Data: {chat_data}</h1>
+	<h1>Chat Data: {chat_data}</h1>
 </div>
